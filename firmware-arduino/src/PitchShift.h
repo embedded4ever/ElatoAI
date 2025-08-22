@@ -14,14 +14,14 @@ public:
     return result;
   }
 
-  bool begin(PitchShiftInfo info);
+  bool begin(const PitchShiftInfo& info);
 
   size_t write(const uint8_t *data, size_t len) override {
     size_t result = 0;
     int16_t *p_in = (int16_t *)data;
     int sample_count = len / sizeof(int16_t);
 
-    for (int j = 0; j < sample_count; j += 1) {
+    for (int j = 0; j < sample_count; ++j) {
       int16_t value = p_in[j];
 
       int16_t out_value = pitchShift(value);
@@ -32,7 +32,7 @@ public:
 
   void end() {}
 
-protected:
+private:
   Print *p_out = nullptr;
 
   int16_t pitchShift(int16_t value);

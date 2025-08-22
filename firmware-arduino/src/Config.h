@@ -5,7 +5,6 @@
 #include <driver/i2s.h>
 #include <Preferences.h>
 #include <HTTPClient.h>
-#include <WiFiClientSecure.h>
 #include <WebSocketsClient.h>
 
 // ---------- CHOOSE YOUR MODE ----------
@@ -22,18 +21,16 @@
 // If you want to use the button to wake up the device, comment the following line
 #define TOUCH_MODE
 
-extern Preferences preferences;
-extern bool factory_reset_status;
 
-enum OtaStatus {
+enum OtaStatus : uint8_t 
+{
     OTA_IDLE,
     OTA_IN_PROGRESS,
     OTA_COMPLETE
 };
 
-extern OtaStatus otaState;
 
-enum DeviceState
+enum DeviceState : uint8_t
 {
     SETUP,
     SOFT_AP,
@@ -47,7 +44,11 @@ enum DeviceState
     SLEEP
 };
 
+extern OtaStatus otaState;
 extern volatile DeviceState deviceState;
+
+extern Preferences preferences;
+extern bool factory_reset_status;
 
 // WiFi credentials
 extern const char *EAP_IDENTITY;
@@ -96,6 +97,7 @@ extern volatile bool sleepRequested;
 // SSL certificate
 extern const char *CA_cert;
 extern const char *Vercel_CA_cert;
+
 void factoryResetDevice();
 void processSleepRequest();
 

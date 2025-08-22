@@ -123,4 +123,3 @@ void performOTAUpdate()
     HttpsOTA.onHttpEvent(HttpEvent);
     HttpsOTA.begin(ota_firmware_url, server_certificate);
 }
-

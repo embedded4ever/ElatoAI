@@ -8,7 +8,8 @@ static int16_t* buf_ = buf2;
 static unsigned long readAddress = 0;
 static unsigned long writeAddress = 0;
 
-bool PitchShiftFixedOutput::begin(PitchShiftInfo info) {
+bool PitchShiftFixedOutput::begin(const PitchShiftInfo& info) 
+{
   TRACED();
   cfg = info;
   AudioOutput::setAudioInfo(info);
@@ -19,8 +20,8 @@ bool PitchShiftFixedOutput::begin(PitchShiftInfo info) {
   return true;
 }
 
-int16_t PitchShiftFixedOutput::pitchShift(int16_t value) {
-
+int16_t PitchShiftFixedOutput::pitchShift(int16_t value) 
+{
   buf_[writeAddress] = value;
 
   int ii1 = (writeAddress * this->pitchMul) >> 8;

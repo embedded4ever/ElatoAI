@@ -45,7 +45,6 @@ void setResetComplete() {
 
     // Clear NVS
     factoryResetDevice();
-
 }
 
 // TODO(@akdeb): Update this to use `false` as default
@@ -64,7 +63,8 @@ void setFactoryResetStatusInNVS(bool status)
     factory_reset_status = status;
 }
 
-void factoryResetDevice() {
+void factoryResetDevice() 
+{
     Serial.println("Factory reset device");
     
     // Erase the NVS partition

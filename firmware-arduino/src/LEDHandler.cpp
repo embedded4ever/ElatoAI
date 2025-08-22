@@ -22,7 +22,8 @@ enum class StaticColor : uint8_t
     CYAN,
 };
 
-struct RGB {
+struct RGB 
+{
     bool red;
     bool green;
     bool blue;
@@ -181,7 +182,6 @@ void blinkCyanPulse()
     }
 }
 
-
 void blinkBlue()
 {
     int out = ledState ? HIGH : LOW;
@@ -197,13 +197,13 @@ void staticYellow()
     digitalWrite(GREEN_LED_PIN, HIGH);
 }
 
-static const uint8_t colorSequence[][3] = {
+static constexpr uint8_t colorSequence[][3] = {
     {0, 255, 255}, // Cyan   (R=0,   G=255, B=255)
     {255, 0, 255}, // Pink   (R=255, G=0,   B=255)
     {255, 255, 0}, // Yellow (R=255, G=255, B=0)
 };
 
-static const int NUM_COLORS = sizeof(colorSequence) / sizeof(colorSequence[0]);
+static constexpr int NUM_COLORS = sizeof(colorSequence) / sizeof(colorSequence[0]);
 
 void loopCyanPinkYellowPulse(unsigned long currentTime)
 {
